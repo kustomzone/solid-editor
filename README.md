@@ -1,2 +1,5 @@
 # solid-editor
-https://dredd.solid.community/public/
+
+ A solid file manager & editor.
+
+(wip) https://dredd.solid.community/public/

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>3D-Nav</title>
+	 <link rel="stylesheet" href="./css/nav.css">
+  </head>
+
+  <body>
+    <input type="file" id="dirsel" webkitdirectory="" directory="">
+	<div id="console">
+      <div id="history"></div>
+      <div id="currentDir"></div>
+      <input type="text" id="cmdline">
+    </div>
+    <script type="text/javascript" defer="" async="" src="./js/uaest.js"></script>
+	<script type="text/x-glsl-fs" id="bg-frag">
+
+		precision mediump float;
+		uniform sampler2D Texture0;
+		uniform float aspect;
+		varying vec2 texCoord0;
+
+		void main() {
+			float ds = 2.0*(texCoord0.s-0.5);
+			float dt = texCoord0.t-0.5;
+			float r = sin((dt*3.0+ds*ds) * 400.0);
+			float dx = (1.1-texCoord0.s) * aspect;
+			float dy = (0.9-texCoord0.t) / aspect;
+			float d = sqrt(dx*dx + dy*dy)+0.05*r;
+			vec4 c = vec4(0.76,0.72,0.78, 0.5-0.8*d);
+			gl_FragColor = c*c.a;
+		}
+
+    </script>
+    <script type="text/javascript" src="./js/magi.js"></script>
+    <script type="text/javascript" src="./js/fsn.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+  
+<canvas id="canvas-uuid-0" width="1280" height="709" style="position: absolute; left: 0px; top: 0px;"></canvas></body></html>

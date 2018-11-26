@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html ng-app="App" ng-controller="MainCtrl" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}</style>
+    <title ng-bind="pageTitle" class="ng-binding">File Editor</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- font awesome -->
+    <!-- <link href="assets/css/font-awesome.css" rel="stylesheet"> -->
+
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/editor.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="img/png" href="./img/file-manager.gif">
+
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" defer="" async="" src="./js/uaest.js"></script>
+	<script type="text/javascript" src="./editor/angular-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="./editor/angular.js"></script>
+    <script type="text/javascript" src="./editor/angular-file-upload.min.js"></script>
+    <script type="text/javascript" src="./editor/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="./editor/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="./editor/angular-placeholders-0.0.1.min.js"></script>
+    <script type="text/javascript" src="./editor/angular-ui-router.js"></script>
+    <script type="text/javascript" src="./editor/ngProgress.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./editor/rdflib.js"></script>
+    <script type="text/javascript" src="./editor/notify.js"></script>
+    <script type="text/javascript" src="./js/moment.min.js"></script>
+    <script type="text/javascript" src="./editor/about.js"></script>
+    <script type="text/javascript" src="./editor/app.js"></script>
+    <script type="text/javascript" src="./editor/list.js"></script>
+    <script type="text/javascript" src="./editor/common.js"></script>
+    <script type="text/javascript" src="./editor/templates-common.js"></script>
+    <script type="text/javascript" src="./editor/templates-app.js"></script>
+  <style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.ttf) format('truetype')}</style></head>
+  <body flow-prevent-drop="" class="">
+    <!-- uiView: main --><div ui-view="main" class="main ng-scope"><div class="ng-scope">
+  <div class="topbar box-shadow" ng-show="path">
+    <div>
+      <table class="create-new">
+      <tbody><tr>
+        <td class="vtop pull-left">
+          <div class="btn-group" dropdown="">
+		    <!-- http://linkeddata.github.io/warp/#/list/https/public.databox.me/ -->
+            <button type="button" class="btn btn-success dropdown-toggle ng-scope" ng-disabled="disabled" tooltip-placement="bottom" tooltip="New..."><i class="fa fa-2x fa-plus"></i></button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="https://dredd.solid.community/public/" ng-click="openNewDir()"><i class="fa fa-2x fa-folder-open-o fa-fw vmiddle"></i> Directory</a></li>
+              <li><a href="https://dredd.solid.community/public/" ng-click="openNewFile()"><i class="fa fa-2x fa-file-o fa-fw vmiddle"></i> File</a></li>
+              <li><a href="https://dredd.solid.community/public/" ng-click="openNewUpload(path)"><i class="fa fa-2x fa-cloud-upload fa-fw vmiddle"></i> Upload</a></li>
+            </ul>
+          </div>
+        </td>
+        <td class="vtop pull-left">
+          <button type="button" class="btn btn-info ng-scope" tooltip-placement="bottom" tooltip="Pick a different storage location" ng-click="openNewLocation()"><i class="fa fa-2x fa-database white"></i></button>
+        </td>
+        <td class="pull-left">
+          <div id="crumbs" class="collapse navbar-collapse">
+            <ul>
+              <!-- ngRepeat: crumb in breadCrumbs --><li ng-repeat="crumb in breadCrumbs" class="ng-scope">
+                <a href="https://dredd.solid.community/">
+				<i class="fa white fa-home" ng-class="$first?&#39;fa-home&#39;:&#39;fa-folder-open-o&#39;"></i>
+				<span class="white ng-binding"> dredd.solid.community</span></a>
+              </li><!-- end ngRepeat: crumb in breadCrumbs --><li ng-repeat="crumb in breadCrumbs" class="ng-scope">
+                <a href="https://dredd.solid.community/public/">
+				<i class="fa white fa-folder-open-o" ng-class="$first?&#39;fa-home&#39;:&#39;fa-folder-open-o&#39;"></i>
+				<span class="white ng-binding"> public</span></a>
+              </li><!-- end ngRepeat: crumb in breadCrumbs --><li ng-repeat="crumb in breadCrumbs" class="ng-scope">
+                <a href="https://dredd.solid.community/public/">
+				<i class="fa white fa-folder-open-o" ng-class="$first?&#39;fa-home&#39;:&#39;fa-folder-open-o&#39;"></i>
+				<span class="white ng-binding"> </span></a>
+              </li><!-- end ngRepeat: crumb in breadCrumbs -->
+            </ul>
+          </div>
+        </td>
+        <td class="pull-right vmiddle white">
+          <div tooltip-placement="bottom" tooltip="" class="avatar-frame ng-scope ng-hide" ng-show="userProfile.webid">
+            <a href="https://dredd.solid.community/profile/view?webid=undefined" target="_blank">
+			<img ng-src="" src="./img/generic_photo.png"></a>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+    </div>
+  </div>
+
+  <div class="col-md-12 ng-hide" ng-hide="listLocation">
+    <div class="clear-70"></div>
+    <h1>Please provide a location for the LDP server:</h1>
+    <div class="prepare-list">
+      <form name="preList" class="ng-pristine ng-valid">
+        <div class="btn-group half-width">
+          <input type="text" ng-model="uriPath" name="uriPath" id="uriPath" class="nginput pull-left ng-pristine ng-valid" placeholder="https://dredd.solid.community/public/" autofocus="">
+          <button class="btn btn-primary" ng-click="prepareList(uriPath)"><i class="fa fa-search fa-2x"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="index" ng-show="listLocation">
+    <table class="box-shadow">
+      <thead>
+          <tr><th class="filename">Name</th>
+          <th>Size</th>
+          <th>Modified</th>
+          <th class="right">More</th>
+      </tr></thead>
+      <tbody><tr ng-show="emptyDir" class="ng-hide">
+        <td colspan="4"><h2>Cannot list contents <span ng-show="noPerm" class="ng-hide">(access denied)</span></h2></td>
+      </tr>
+      <!-- ngRepeat: res in resources|orderBy:['type','name'] track by res.id -->
+	  
+    </tbody></table>
+  </div>
+
+
+  <!-- New location modal -->
+  <script type="text/ng-template" id="newlocation.html">
+    <div>
+      <div class="modal-header">
+            <h3 class="modal-title">Please provide a location for the data server:</h3>
+        </div>
+        <div class="modal-body">
+          <form name="newLocName">
+            <fieldset>
+              <input type="text" ng-model="locName" name="locName" id="locName" class="nginput pull-left" placeholder="https://dredd.solid.community/public/" ng-focus="isFocused" ng-keypress="($event.which === 13)?newLoc(locName):0">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="newLoc(locName)">OK</button>
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+  </script>
+
+  <!-- New dir modal -->
+  <script type="text/ng-template" id="newdir.html">
+    <div>
+      <div class="modal-header">
+            <h3 class="modal-title">New directory</h3>
+        </div>
+        <div class="modal-body">
+          <form name="newDirName">
+            <fieldset>
+              <input type="text" ng-model="dirName" name="dirName" id="dirName" class="nginput" placeholder="dir name.." ng-focus="isFocused" ng-keypress="($event.which === 13)?newDir(dirName):0">
+              <span ng-hide="newDirName.dirName.$valid">Only use: a-z A-Z 0-9 _ -</span>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="newDir(dirName)">OK</button>
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+  </script>
+
+  <!-- New file modal -->
+  <script type="text/ng-template" id="newfile.html">
+    <div>
+      <div class="modal-header">
+            <h3 class="modal-title">New file</h3>
+        </div>
+        <div class="modal-body">
+          <form name="newFileName">
+            <fieldset>
+              <input type="text" ng-model="fileName" name="fileName" id="fileName" class="nginput" placeholder="file name.." ng-focus="isFocused" ng-keypress="($event.which === 13)?newFile(fileName):0" />
+              <!-- <span ng-hide="newFileName.fileName.$valid">Only use: a-z A-Z 0-9 _ - .</span> -->
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="newFile(fileName)">OK</button>
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+  </script>
+
+  <!-- File editor modal -->
+  <script type="text/ng-template" id="fileEditor.html">
+    <div>
+      <div class="modal-header">
+            <h3 class="modal-title">File Editor</h3>
+        </div>
+        <div class="modal-body">
+          <form name="newFileContent">
+            <fieldset>
+              <textarea id="fileContent" name="fileContent" class="nginput-new"></textarea>
+              <!-- <span ng-hide="newFileName.fileName.$valid">Only use: a-z A-Z 0-9 _ - .</span> -->
+            </fieldset>
+          </form>
+          <br/><small class="orange">Warning: any changes to this file will overwrite it!</small>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="updateFile(fileContent)">Save</button>
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+    </script>
+
+  <!-- Upload file modal -->
+  <script type="text/ng-template" id="uploadfiles.html">
+    <div>
+      <div class="modal-header">
+        <h3 class="modal-title">Upload files to <strong>{{container}}/</strong></h3>
+      </div>
+      <div class="modal-body">
+        <input type="file" ng-file-select="onFileSelect($files)" data-multiple="true" multiple="multiple">
+        <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="'dropzone-on'" class="dropzone" ng-show="dropSupported">
+          Drop files here
+        </div>
+        <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">
+          HTML5 Drop File is not supported!
+        </div>
+        <table class="upload-files" ng-show="selectedFiles.length > 0">
+          <tr>
+            <td><strong>File name</strong></td>
+            <td><strong>Status</strong></td>
+            <td></td>
+          </tr>
+          <tr ng-repeat="file in selectedFiles track by $index" ng-class="progress[file.name] == 100?'done':''">
+            <td>{{file.name|truncate:25}}</td>
+            <td><div tooltip-placement="bottom" tooltip="Uploading...{{progress[file.name]}}%"><progressbar value="progress[file.name]"></progressbar></div></td>
+            <td class="pull-right">
+              <button ng-hide="progress[file.name] == 100" class="btn btn-mini btn-default" ng-click="abort(file.name)"><i class="fa fa-2x fa-times"></i></button>
+              <button ng-show="progress[file.name] == 100" class="btn btn-mini btn-default" ng-click="remove(file.name)"><i class="fa fa-2x fa-trash-o"></i></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" ng-click="clearUploaded()" ng-show="selectedFiles.length > 0">Clear files</button>
+        <button class="btn btn-default" ng-click="cancel()">Close</button>
+      </div>
+    </div>
+  </script>
+
+  <!-- Remove resource modal -->
+  <script type="text/ng-template" id="delete.html">
+    <div>
+      <div class="modal-header">
+            <h3 class="modal-title"><i class="fa fa-2x fa-trash-o fa-fw vmiddle"></i> Delete resource</h3>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete:</p>
+          <p><strong>{{resource}}</strong></p>
+          <small>Note: make sure directories are empty before removing them.</small>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="deleteResource(resource)">Yes</button>
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+  </script>
+
+  <!-- ACL editor modal -->
+  <script type="text/ng-template" id="acleditor.html">
+    <div>
+      <div class="modal-header">
+        <h3 class="modal-title">Permissions for <strong>{{resource}}</strong></h3>
+        <img ng-src="assets/loading.gif" ng-show="loading">
+      </div>
+        <div class="modal-body">
+          <table class="full-width">
+            <tr>
+              <td class="pull-left">
+                <div class="permission-icons">
+                  <strong>Owners</strong>
+                  <br/>
+                  <i class="fa fa-2x fa-lock vmiddle"></i>
+                </div>
+              </td>
+              <td class="vtop policies">
+                <div class="policy" ng-hide="gotOwner">
+                  <h3 class="orange">Attention!</h3>
+                  You will not be able to update this policy in the future if you do not set at least one owner. Click the button below to add an owner.
+                </div>
+                <div class="policy" ng-repeat="policy in policies|filter:{cat: 'owner'}">
+                  <div class="pull-left">
+                    <img ng-src="assets/loading.gif" ng-show="policy.loading" />
+                    <button class="btn btn-sm" ng-click="removePolicy(policy.$$hashKey)" ng-hide="policy.loading"><i class="fa fa-trash-o orange"></i></button>
+                    <a href="{{policy.webid}}" target="_blank" ng-show="policy.webid">{{trunc(policy.fullname, 24)}}</a>
+                    <div class="inline-block" ng-show="policy.key">
+                      Key: {{trunc(policy.fullname, 24)}}
+                      <a href="{{uri}}?key={{policy.key}}" target="_blank">Link</a>
+                    </div>
+
+                  </div>
+                  <br>
+                </div>
+                <div class="spacer">
+                  <div class="policy" ng-show="newUser['owner']">
+                    <input class="new-user vmiddle" type="text" ng-focus="isFocused" ng-model="newUser['owner'].webid" typeahead="match.webid as match.name for match in lookupWebID($viewValue)|filter:{name:$viewValue}|limitTo:8" typeahead-loading="searchloading" typeahead-min-length="2" typeahead-wait-ms="200" typeahead-on-select="addNewUser('owner', $item.webid)"/>
+                    <img ng-src="assets/loading.gif" ng-show="searchloading" />
+                    <button class="btn btn-sm btn-primary" ng-click="addNewUser('owner', newUser['owner'].webid)"><i class="fa fa-2x fa-check-circle-o"></i></button>
+                    <button class="btn btn-sm" ng-click="cancelNewUser('owner')"><i class="fa fa-2x fa-times-circle-o"></i></button>
+                    <br/>
+                  </div>
+                  <div class="policy" ng-show="newKey['owner']">
+                    <input class="new-user vmiddle" type="text" ng-focus="isFocused" ng-model="newKey['owner'].key">
+                    <button class="btn btn-sm btn-primary" ng-click="generateNewKey(newKey['owner'])" tooltip-placement="bottom" tooltip="Generate a random key"><i class="fa fa-2x fa-key"></i></button>
+                    <button class="btn btn-sm btn-primary" ng-click="addNewKey('owner', newKey['owner'].key)" ng-disabled="newKey['owner'].key.length === 0"><i class="fa fa-2x fa-check-circle-o"></i></button>
+                    <button class="btn btn-sm" ng-click="cancelNewKey('owner')"><i class="fa fa-2x fa-times-circle-o"></i></button>
+                    <br/>
+                  </div>
+                  <button class="btn btn-primary" ng-click="showNewUser('owner')" ng-hide="newUser['owner']">Add user</button>
+                  <button class="btn btn-primary" ng-click="showNewKey('owner')" ng-hide="newKey['owner']">Add key</button>
+                </div>
+              </td>
+            </tr>
+            <tr><td colspan="2"><hr/></td></tr>
+            <tr>
+              <td class="pull-left">
+                <div class="permission-icons">
+                  <strong>Others</strong>
+                  <br/>
+                  <i class="fa fa-2x fa-users vmiddle"></i>
+                </div>
+              </td>
+              <td class="vtop policies">
+                <div class="policy" ng-repeat="policy in policies|filter:{cat: 'others'}">
+                  <div class="pull-left">
+                    <img ng-src="assets/loading.gif" ng-show="policy.loading" />
+                    <button class="btn btn-sm" ng-click="removePolicy(policy.$$hashKey)" ng-hide="policy.loading"><i class="fa fa-trash-o orange"></i></button>
+                    <a href="{{policy.webid}}" target="_blank" ng-show="policy.webid">{{trunc(policy.fullname, 24)}}</a>
+                    <div class="inline-block" ng-show="policy.key">
+                      Key: {{trunc(policy.fullname, 24)}}
+                      <a href="{{uri}}?key={{policy.key}}" target="_blank">Link</a>
+                    </div>
+                  </div>
+                  <div class="boxes pull-right">
+                      <input type="checkbox" ng-model="policy.modes.Read" class="inline-block"><div class="inline-block mode-label">Read</div>
+                      <input type="checkbox" ng-model="policy.modes.Write" class="inline-block"><div class="inline-block mode-label">Write</div>
+                      <input type="checkbox" ng-model="policy.modes.Append" class="inline-block"><div class="inline-block mode-label" tooltip-placement="bottom" tooltip="Able to write without reading or deleting.">Append</div>
+                      <br/>
+                  </div>
+                  <br/>
+                </div>
+                <div class="spacer">
+                  <div class="policy" ng-show="newUser['others']">
+                    <input class="new-user vmiddle" type="text" ng-focus="isFocused" ng-model="newUser['others'].webid" typeahead="match.webid as match.name for match in lookupWebID($viewValue)|filter:{name:$viewValue}|limitTo:8" typeahead-loading="searchloading" typeahead-min-length="2" typeahead-wait-ms="200" typeahead-on-select="addNewUser('others', $item.webid)"/>
+                    <img ng-src="assets/loading.gif" ng-show="searchloading" />
+                    <button class="btn btn-sm btn-primary" ng-click="addNewUser('others', newUser['others'].webid)"><i class="fa fa-2x fa-check-circle-o"></i></button>
+                    <button class="btn btn-sm" ng-click="cancelNewUser('others')"><i class="fa fa-2x fa-times-circle-o"></i></button>
+                    <br/>
+                  </div>
+                  <div class="policy" ng-show="newKey['others']">
+                    <input class="new-user vmiddle" type="text" ng-focus="isFocused" ng-model="newKey['others'].key">
+                    <button class="btn btn-sm btn-primary" ng-click="generateNewKey(newKey['others'])" tooltip-placement="bottom" tooltip="Generate a random key"><i class="fa fa-2x fa-key"></i></button>
+                    <button class="btn btn-sm btn-primary" ng-click="addNewKey('others', newKey['others'].key)" ng-disabled="newKey['others'].key.length === 0"><i class="fa fa-2x fa-check-circle-o"></i></button>
+                    <button class="btn btn-sm" ng-click="cancelNewKey('others')"><i class="fa fa-2x fa-times-circle-o"></i></button>
+                    <br/>
+                  </div>
+                  <button class="btn btn-primary" ng-click="showNewUser('others')" ng-hide="newUser['others']">Add user</button>
+                  <button class="btn btn-primary" ng-click="showNewKey('others')" ng-hide="newKey['others']">Add key</button>
+                </div>
+              </td>
+            </tr>
+            <tr><td colspan="2"><hr/></td></tr>
+            <tr>
+              <td class="pull-left">
+                <div class="permission-icons">
+                  <strong>Everyone</strong>
+                  <br/>
+                  <i class="fa fa-2x fa-unlock-alt vmiddle"></i>
+                </div>
+              </td>
+              <td class="vtop policies">
+                <div ng-repeat="policy in policies|filter:{cat: 'any'}|limitTo:1">
+                  <div class="boxes pull-right">
+                      <input type="checkbox" ng-model="policy.modes.Read" class="inline-block"><div class="inline-block mode-label">Read</div>
+                      <input type="checkbox" ng-model="policy.modes.Write" class="inline-block"><div class="inline-block mode-label">Write</div>
+                      <input type="checkbox" ng-model="policy.modes.Append" class="inline-block"><div class="inline-block mode-label" tooltip-placement="bottom" tooltip="Able to write without reading or deleting.">Append</div>
+                      <br/>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="setAcl()" ng-disabled="disableOk">
+            <span ng-hide="disableOk">
+              Save
+            </span>
+
+            <span ng-show="disableOk">
+              Saving
+              <i class="fa fa-spinner fa-spin"></i>
+            </span>
+          </button>
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+  </script>
+  <script type="text/ng-template" id="webidresults.html">
+    <a>
+        <img ng-src="{{match.img}}" width="16">
+        <span bind-html-unsafe="match.name | typeaheadHighlight:query"></span>
+    </a>
+  </script>
+
+</div>
+</div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>
+            </a> | <a href="https://github.com/kustomzone/solid-editor"><i class="fa fa-bug"></i>Source</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+<div id="ngProgress-container" class="ng-scope">
+ <div id="ngProgress" style="height: 3px; background-color: rgb(255, 60, 31); color: rgb(255, 60, 31); width: 0%; opacity: 1;"></div>
+</div>
+</body></html>

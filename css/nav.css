@@ -1,0 +1,107 @@
+      canvas {
+        background-color: white;
+      }
+      body {
+        margin: 0px;
+        overflow: hidden;
+        font-family:Monospace;
+        font-size:13px;
+        text-align:center;
+        font-weight: bold;
+        text-align:center;
+      }
+
+      a {
+        color:#0078ff;
+      }
+
+      #info {
+        color:#fff;
+        position: absolute;
+        top: 0px; width: 100%;
+        padding: 5px;
+        z-index:100;
+      }
+
+      #console {
+        text-align: left;
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        color: white;
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 240px;
+        z-index: 15;
+        font-size: 14px;
+        display: block;
+      }
+      #history {
+        height: 200px;
+        overflow: auto;
+        margin: 0px;
+        padding: 0px;
+        font-size: 14px;
+        font-family: monospace;
+        width: 100%;
+        font-weight: lighter;
+        display: block;
+      }
+      #history p {
+        margin-left: 16px;
+      }
+      #history p span {
+        margin-right: 16px;
+      }
+      #currentDir {
+        height: 20px;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
+        font-family: monospace;
+        width: 100%;
+        font-weight: lighter;
+        display: block;
+      }
+      #currentDir p {
+        margin: 0px;
+        margin-left: 8px;
+      }
+      #cmdline {
+        display: block;
+        border: 0px;
+        width: 100%;
+        margin: 0px;
+        height: 19x;
+        border-top: 1px solid #888;
+        font-size: 14px;
+        font-family: monospace;
+        font-weight: lighter;
+        background: black;
+        color: white;
+        outline: 0px;
+      }
+      .cmd {
+        border-top: 1px solid #444;
+        color: silver;
+      }
+      .dir {
+        color: #acf;
+      }
+      .file {
+        color: #cfa;
+      }
+      .small {
+        font-size: 8px;
+      }
+      #dirsel {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+      }
+    
+	@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.ttf) format('truetype')}
