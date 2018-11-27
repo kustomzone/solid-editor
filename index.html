@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width"><title>
-    Kzone - IDE & file manager for Solid Data Stores
+    Kzone - solid file editor
 </title>
 <!--
   libs : rdflib,solid-auth-client,vue,ace
@@ -12,13 +12,13 @@
   - Authorization – WebACLs (Attribute-based Access Controls informed by rules expressed in RDF)
   - Storage – actual data persistence (via PUT, PATCH etc,) to a Pod or other Data Spaces that support relevant open standards
 -->
-<script src="./lib/rdflib-0.12.2.min.js"></script><!-- "https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js" -->
-<script src="./lib/solid-auth-client.bundle.js"></script><!-- "https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js" -->
-<script src="./lib/vue.min.js"></script><!-- "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" -->
+<script src="./js/rdflib.js"></script><!-- "https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js" -->
+<script src="./js/solid-auth-client.bundle.js"></script><!-- "https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js" -->
+<script src="./js/vue.min.js"></script><!-- "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
-<script src="./lib/solid-auth-simple.js"></script>
-<script src="./lib/zeditor.js"></script>
-<link rel="stylesheet" href="./lib/main.css">
+<script src="./js/solid-auth-simple.js"></script>
+<script src="./editor/zeditor.js"></script>
+<link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
 
 <div id="folderMenu" v-bind:class="fontSize">
        <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl()">
-        <img src="./lib/folder.png">
+        <img src="./img/icons/folder.png">
         </button>
     <button class="fileName" v-on:click="get(folder)">
         <span id="currentFolder">{{folder.name}}</span>
@@ -54,7 +54,7 @@
     <ul>
         <li v-for="subFolder in folder.folders">
             <button class="docIcon">
-                <img src="./lib/folder.png" />
+                <img src="./img/icons/folder.png" />
             </button>
             <button class="fileName" v-on:click="get(subFolder)">
                 {{subFolder.name}}
@@ -65,7 +65,7 @@
     <ul>
         <li v-for="f in folder.files">
             <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()">
-                <img src="./lib/document.png">
+                <img src="./img/icons/document.png">
             </button>
             <button class="fileName" v-on:click.right="download(f)" v-on:click="get(f)" v-bind:title="f.label+' '+f.type">
                 {{f.label}}
@@ -178,7 +178,7 @@
     </div>
 </div><!-- fileDisplay -->
 
-<script src="./lib/solside.js"></script>
+<script src="./js/solside.js"></script>
 
 </body>
 </html>

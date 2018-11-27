@@ -50,7 +50,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "  <div class=\"col-md-12\" ng-hide=\"listLocation\">\n" +
     "    <div class=\"clear-70\"></div>\n" +
-    "    <h1>Please provide a location for the LDP server:</h1>\n" +
+    "    <h3 style='color:#09AF07;'>Please provide location for the LDP server</h3>\n" +
     "    <div class=\"prepare-list\">\n" +
     "      <form name=\"preList\">\n" +
     "        <div class=\"btn-group half-width\">\n" +

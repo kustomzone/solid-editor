@@ -5,26 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- font awesome -->
-    <!-- <link href="assets/css/font-awesome.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
 
-    <!-- compiled CSS -->
+    <!-- compiled css -->
     <link rel="stylesheet" type="text/css" href="./css/editor.css">
 
     <!-- favicon -->
-    <link rel="shortcut icon" type="img/png" href="./img/file-manager.gif">
+    <link rel="shortcut icon" type="img/gif" href="./img/icons/files.gif">
 
     <!-- compiled JavaScript -->
-    <script type="text/javascript" defer="" async="" src="./js/uaest.js"></script>
-	<script type="text/javascript" src="./editor/angular-file-upload-shim.min.js"></script>
-    <script type="text/javascript" src="./editor/angular.js"></script>
-    <script type="text/javascript" src="./editor/angular-file-upload.min.js"></script>
-    <script type="text/javascript" src="./editor/ui-bootstrap-tpls.min.js"></script>
-    <script type="text/javascript" src="./editor/ui-bootstrap.min.js"></script>
-    <script type="text/javascript" src="./editor/angular-placeholders-0.0.1.min.js"></script>
-    <script type="text/javascript" src="./editor/angular-ui-router.js"></script>
+	<script type="text/javascript" src="./js/angular-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="./js/angular.js"></script>
+    <script type="text/javascript" src="./js/angular-file-upload.min.js"></script>
+    <script type="text/javascript" src="./js/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="./js/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/angular-placeholders-0.0.1.min.js"></script>
+    <script type="text/javascript" src="./js/angular-ui-router.js"></script>
     <script type="text/javascript" src="./editor/ngProgress.min.js"></script>
     <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./editor/rdflib.js"></script>
+    <script type="text/javascript" src="./js/rdflib.js"></script>
     <script type="text/javascript" src="./editor/notify.js"></script>
     <script type="text/javascript" src="./js/moment.min.js"></script>
     <script type="text/javascript" src="./editor/about.js"></script>
@@ -42,7 +41,6 @@
       <tbody><tr>
         <td class="vtop pull-left">
           <div class="btn-group" dropdown="">
-		    <!-- http://linkeddata.github.io/warp/#/list/https/public.databox.me/ -->
             <button type="button" class="btn btn-success dropdown-toggle ng-scope" ng-disabled="disabled" tooltip-placement="bottom" tooltip="New..."><i class="fa fa-2x fa-plus"></i></button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="https://dredd.solid.community/public/" ng-click="openNewDir()"><i class="fa fa-2x fa-folder-open-o fa-fw vmiddle"></i> Directory</a></li>
@@ -76,7 +74,7 @@
         <td class="pull-right vmiddle white">
           <div tooltip-placement="bottom" tooltip="" class="avatar-frame ng-scope ng-hide" ng-show="userProfile.webid">
             <a href="https://dredd.solid.community/profile/view?webid=undefined" target="_blank">
-			<img ng-src="" src="./img/generic_photo.png"></a>
+			<img ng-src="" src="./img/icons/new_icon.jpg"></a>
           </div>
         </td>
       </tr>
@@ -86,7 +84,7 @@
 
   <div class="col-md-12 ng-hide" ng-hide="listLocation">
     <div class="clear-70"></div>
-    <h1>Please provide a location for the LDP server:</h1>
+    <h3 style='color:#09AF07;'>Please provide location for the LDP server</h3>
     <div class="prepare-list">
       <form name="preList" class="ng-pristine ng-valid">
         <div class="btn-group half-width">
@@ -407,7 +405,7 @@
       <div class="container">
         <div class="footer-inner">
           <p>
-            </a> | <a href="https://github.com/kustomzone/solid-editor"><i class="fa fa-bug"></i>Source</a>
+            <a href="https://github.com/kustomzone/solid-editor"> Source </a>
           </p>
         </div>
       </div>
