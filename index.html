@@ -71,31 +71,15 @@
         <button v-on:click="view.refresh(currentThing.url)">go</button>
 </span>
     <span class="td right">
-    <button id="saveEdits" v-on:click="fileDisplay.saveEdits()">
-        save
-    </button>
-    <button id="editDisabled">save edits</button>
-    <button v-on:click="fileDisplay.togglePanes()">
-        view
-    </button>
-    <button id="optionsButton" v-on:click="view.show('optionsManager')">
-        options
-    </button>
-    <button type="submit" class="profile" v-on:click="view.refresh('https://dredd.solid.community/profile/card#me')">
-        profile
-    </button>
-     <button type="submit" class="notes" v-on:click="view.refresh('https://dredd.solid.community/public/Vortex/')">
-        notes
-    </button>
-    <button type="submit" class="chat" v-on:click="view.refresh('https://dredd.solid.community/public/Solidity/')">
-        chat
-    </button>
-    <button type="submit" class="inbox" v-on:click="view.refresh('https://dredd.solid.community/inbox/')">
-        email
-    </button>
-    <button type="submit" class="logout" v-on:click="view.refresh('https://dredd.solid.community/index.html')">
-        logout
-    </button>
+    <button type="submit" class="save" id="saveEdits" v-on:click="fileDisplay.saveEdits()"></button>
+    <button class="no-save" id="editDisabled"></button>
+    <button type="submit" class="config" v-on:click="fileDisplay.togglePanes()"></button>
+    <button type="submit" class="view" id="optionsButton" v-on:click="view.show('optionsManager')"></button>
+    <button type="submit" class="profile" v-on:click="view.refresh('https://dredd.solid.community/profile/card#me')"></button>
+    <button type="submit" class="notes" v-on:click="view.refresh('https://dredd.solid.community/public/Vortex/')"></button>
+    <button type="submit" class="chat"  v-on:click="view.refresh('https://dredd.solid.community/public/Solidity/')"></button>
+    <button type="submit" class="email" v-on:click="view.refresh('https://dredd.solid.community/inbox/')"></button>
+    <button type="submit" class="exit"  v-on:click="view.refresh('https://dredd.solid.community/index.html')"></button>
     </span>
 </span></div><!-- opt -->
 
