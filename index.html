@@ -72,7 +72,7 @@
 </span>
     <span class="td right">
     <button id="saveEdits" v-on:click="fileDisplay.saveEdits()">
-        save edits
+        save
     </button>
     <button id="editDisabled">save edits</button>
     <button v-on:click="fileDisplay.togglePanes()">
@@ -81,9 +81,21 @@
     <button id="optionsButton" v-on:click="view.show('optionsManager')">
         options
     </button>
-    <button type="submit" class="signout" v-on:click="usermode('loggedout')">
-        sign out
-     </button>
+    <button type="submit" class="profile" v-on:click="view.refresh('https://dredd.solid.community/profile/card#me')">
+        profile
+    </button>
+     <button type="submit" class="notes" v-on:click="view.refresh('https://dredd.solid.community/public/Vortex/')">
+        notes
+    </button>
+    <button type="submit" class="chat" v-on:click="view.refresh('https://dredd.solid.community/public/Solidity/')">
+        chat
+    </button>
+    <button type="submit" class="inbox" v-on:click="view.refresh('https://dredd.solid.community/inbox/')">
+        email
+    </button>
+    <button type="submit" class="logout" v-on:click="view.refresh('https://dredd.solid.community/index.html')">
+        logout
+    </button>
     </span>
 </span></div><!-- opt -->
 

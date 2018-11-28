@@ -1,5 +1,18 @@
 /* WIDTH */
-body  { margin:1vw; padding:0; background-color: #C9C5C0; }
+body  { margin:1vw; padding:0; background: none; }
+
+body::after {
+  content: "";
+  background: url('../img/checkered.jpg') repeat;
+  opacity: 0.19;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 #folderMenu { width:19vw; }
 #dataBrowser, #editor, iframe   { left:20vw; width:80vw; }
 .formArea { left:20vw; max-width:80vw;}
@@ -33,7 +46,8 @@ span { width: 100%; }
 input.short{ width:15em; }
 input  {font-size:14px; font-weight: bold; padding:0.35em; padding-right: 4px; width:450px; color: #D0D0D0; background-color: #A0A0A0; border-radius:7px; border-style: 1px #090707 solid;}
 
-.HeaderMenu {margin:5px; height: 30px; padding:5px; padding-bottom:8px; width:98%; }
+.HeaderMenu {margin:5px; height: 30px; padding:5px; padding-bottom:8px; width:98%; opacity: 0.9; }
+.HeaderMenu:hover {  opacity: 1; }
 
 .Header{background-color:#24292e;color:hsla(0,0%,100%,.75); width:100%}
 .Header .dropdown-menu{width:300px}
