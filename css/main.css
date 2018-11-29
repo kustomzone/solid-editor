@@ -13,15 +13,17 @@ body::after {
   z-index: -1;
 }
 
-.save    { background: url('../img/icons/save.png');   background-position: center; width: 34px; height: 30px; }
-.no-save { background: url('../img/icons/save.png');   background-position: center; width: 34px; height: 30px; opacity: 0.5; }
-.view    { background: url('../img/icons/view.png');   background-position: center; width: 34px; height: 30px; }
-.config  { background: url('../img/icons/config.png'); background-position: center; width: 34px; height: 30px; }
-.profile { background: url('../img/icons/profile.png');background-position: center; width: 34px; height: 30px; }
-.notes   { background: url('../img/icons/notes.png');  background-position: center; width: 34px; height: 30px; }
-.chat    { background: url('../img/icons/chat.png');   background-position: center; width: 34px; height: 30px; }
-.email   { background: url('../img/icons/email.png');  background-position: center; width: 34px; height: 30px; }
-.exit    { background: url('../img/icons/exit.png');   background-position: center; width: 34px; height: 30px; }
+.view    { background: url('../img/icons/view.png');    background-position: center; width: 34px; height: 30px; }
+.fork    { background: url('../img/icons/fork.png');    background-position: center; width: 34px; height: 30px; }
+.awesome { background: url('../img/icons/awesome.png'); background-position: center; width: 34px; height: 30px; }
+.save    { background: url('../img/icons/save.png');    background-position: center; width: 34px; height: 30px; }
+.no-save { background: url('../img/icons/save.png');    background-position: center; width: 34px; height: 30px; opacity: 0.5; }
+.config  { background: url('../img/icons/config.png');  background-position: center; width: 34px; height: 30px; }
+.profile { background: url('../img/icons/profile.png'); background-position: center; width: 34px; height: 30px; }
+.notes   { background: url('../img/icons/notes.png');   background-position: center; width: 34px; height: 30px; }
+.chat    { background: url('../img/icons/chat.png');    background-position: center; width: 34px; height: 30px; }
+.email   { background: url('../img/icons/email.png');   background-position: center; width: 34px; height: 30px; }
+.exit    { background: url('../img/icons/exit.png');    background-position: center; width: 34px; height: 30px; }
 
 #folderMenu { width:19vw; }
 #dataBrowser, #editor, iframe   { left:20vw; width:80vw; }

@@ -71,10 +71,12 @@
         <button v-on:click="view.refresh(currentThing.url)">go</button>
 </span>
     <span class="td right">
+    <button type="submit" class="view" v-on:click="fileDisplay.togglePanes()"></button>
+    <button type="submit" class="fork" method="get" target="_blank" onclick="location.href='https://github.com/kustomzone/solid-editor';"></button>
+    <button type="submit" class="awesome" method="get" target="_blank" onclick="location.href='https://github.com/kustomzone/awesome-solid';"></button>
     <button type="submit" class="save" id="saveEdits" v-on:click="fileDisplay.saveEdits()"></button>
     <button class="no-save" id="editDisabled"></button>
-    <button type="submit" class="config" v-on:click="fileDisplay.togglePanes()"></button>
-    <button type="submit" class="view" id="optionsButton" v-on:click="view.show('optionsManager')"></button>
+    <button type="submit" class="config" id="optionsButton" v-on:click="view.show('optionsManager')"></button>
     <button type="submit" class="profile" v-on:click="view.refresh('https://dredd.solid.community/profile/card#me')"></button>
     <button type="submit" class="notes" v-on:click="view.refresh('https://dredd.solid.community/public/Vortex/')"></button>
     <button type="submit" class="chat"  v-on:click="view.refresh('https://dredd.solid.community/public/Solidity/')"></button>
