@@ -20,6 +20,7 @@ body::after {
 .no-save { background: url('../img/icons/save.png');    background-position: center; width: 34px; height: 30px; opacity: 0.5; }
 .config  { background: url('../img/icons/config.png');  background-position: center; width: 34px; height: 30px; }
 .profile { background: url('../img/icons/profile.png'); background-position: center; width: 34px; height: 30px; }
+.draw    { background: url('../img/icons/draw.png');    background-position: center; width: 34px; height: 30px; }
 .notes   { background: url('../img/icons/notes.png');   background-position: center; width: 34px; height: 30px; }
 .chat    { background: url('../img/icons/chat.png');    background-position: center; width: 34px; height: 30px; }
 .email   { background: url('../img/icons/email.png');   background-position: center; width: 34px; height: 30px; }
