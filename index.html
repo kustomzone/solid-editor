@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width"><title>
-    Kzone - solid file editor
+    Kzone file editor
 </title>
 
 <!--
@@ -19,7 +19,7 @@
 <script src="./js/rdflib.js"></script><!-- "https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js" -->
 <script src="./js/solid-auth-client.bundle.js"></script><!-- "https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js" -->
 <script src="./js/vue.min.js"></script><!-- "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+<script src="./js/ace/ace.js"></script><!-- "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js" -->
 <script src="./js/solid-auth-simple.js"></script>
 <script src="./editor/zeditor.js"></script>
 
@@ -65,26 +65,28 @@
 
 <div class="HeaderMenu">
 
-<div id="opt" class="topRow table" v-bind:class="fontSize"><span class="tr">
-    <span class="td left">
-        <input type="text" class="header-search" v-model="currentThing.url" v-on:change="view.refresh(currentThing.url)">
-        <button v-on:click="view.refresh(currentThing.url)">go</button>
-</span>
-    <span class="td right">
-    <button type="submit" class="view" v-on:click="fileDisplay.togglePanes()"></button>
-    <button type="submit" class="fork" method="get" target="_blank" onclick="location.href='https://github.com/kustomzone/solid-editor';"></button>
-    <button type="submit" class="awesome" method="get" target="_blank" onclick="location.href='https://github.com/kustomzone/awesome-solid';"></button>
-    <button type="submit" class="save" id="saveEdits" v-on:click="fileDisplay.saveEdits()"></button>
-    <button class="no-save" id="editDisabled"></button>
-    <button type="submit" class="config" id="optionsButton" v-on:click="view.show('optionsManager')"></button>
-    <button type="submit" class="profile" v-on:click="view.refresh('https://dredd.solid.community/profile/card#me')"></button>
-    <button type="submit" class="draw"  v-on:click="view.refresh('https://dredd.solid.community/public/draw.html')"></button>
-    <button type="submit" class="notes" v-on:click="view.refresh('https://dredd.solid.community/public/Vortex/')"></button>
-    <button type="submit" class="chat"  v-on:click="view.refresh('https://dredd.solid.community/public/Solidity/')"></button>
-    <button type="submit" class="email" v-on:click="view.refresh('https://dredd.solid.community/inbox/')"></button>
-    <button type="submit" class="exit"  v-on:click="view.refresh('https://dredd.solid.community/index.html')"></button>
-    </span>
-</span></div><!-- opt -->
+<div id="opt" class="topRow table" v-bind:class="fontSize">
+ <span class="tr">
+  <span class="td left">
+    <input type="text" class="header-search" v-model="currentThing.url" v-on:change="view.refresh(currentThing.url)">
+    <button v-on:click="view.refresh(currentThing.url)">go</button>
+  </span>
+  <span class="td right">
+    <button type="submit" class="view" title="toggle view" v-on:click="fileDisplay.togglePanes()"></button>
+    <button type="submit" class="fork" title="github repu" method="get" target="_blank" onclick="location.href='https://github.com/kustomzone/solid-editor';"></button>
+    <button type="submit" class="awesome" title="awesome solid" method="get" target="_blank" onclick="location.href='https://github.com/kustomzone/awesome-solid';"></button>
+    <button type="submit" class="save" title="save edits" id="saveEdits" v-on:click="fileDisplay.saveEdits()"></button>
+    <button class="no-save" title="save disabled" id="editDisabled"></button>
+    <button type="submit" class="config" title="editor config" id="optionsButton" v-on:click="view.show('optionsManager')"></button>
+    <button type="submit" class="profile" title="view profile" v-on:click="view.refresh('https://dredd.solid.community/profile/card#me')"></button>
+    <button type="submit" class="draw"  title="draw tool" v-on:click="view.refresh('https://dredd.solid.community/public/draw.html')"></button>
+    <button type="submit" class="notes" title="notes app" v-on:click="view.refresh('https://dredd.solid.community/public/Vortex/')"></button>
+    <button type="submit" class="chat"  title="chat app" v-on:click="view.refresh('https://dredd.solid.community/public/Solidity/')"></button>
+    <button type="submit" class="email" title="solid inbox" v-on:click="view.refresh('https://dredd.solid.community/inbox/')"></button>
+    <button type="submit" class="exit"  title="logout page" v-on:click="view.refresh('https://dredd.solid.community/index.html')"></button>
+  </span>
+ </span>
+</div><!-- opt -->
 
 </div><!-- Headermenu -->
 
@@ -209,7 +211,7 @@
 </div></div>
 <hr>
      <button v-on:click="storePrefs()">save preferences</button>
-     <a type="button" target="_blank" href="mailto:dubzed@gmail.com">send feedback</a>
+     <a type="button" target="_blank" href="mailto:i7redd@gmail.com">send feedback</a>
 
 </div><!-- optionsManager -->
 
