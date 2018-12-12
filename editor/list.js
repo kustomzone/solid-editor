@@ -1223,7 +1223,7 @@ var ModalACLEditor = function ($scope, $modalInstance, $http, resources, uri, ac
             var match = {};
             match.webid = key;
             if (!value.img) {
-              match.img = 'assets/generic_photo.png';
+              match.img = 'img/icons/profile.png';
             } else {
               match.img = value.img[0];
             }

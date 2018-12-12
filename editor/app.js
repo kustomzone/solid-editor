@@ -26,7 +26,7 @@ angular.module( 'App', [
   ngProgress.color('#ff3c1f');
   $scope.appuri = window.location.hostname+window.location.pathname;
   $scope.userProfile = {};
-  $scope.userProfile.picture = 'img/generic_photo.png';
+  $scope.userProfile.picture = 'img/icons/profile.png';
   $scope.notifStatus = getNotifStatus();
   $scope.notifEnabledTxt = ($scope.notifStatus=='granted')?'Notifications enabled.':'Notifications disabled.';
 
