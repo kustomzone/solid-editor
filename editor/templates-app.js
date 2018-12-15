@@ -240,7 +240,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "    <div>\n" +
     "      <div class=\"modal-header\">\n" +
     "        <h3 class=\"modal-title\">Permissions for <strong>{{resource}}</strong></h3>\n" +
-    "        <img ng-src=\"assets/loading.gif\" ng-show=\"loading\">\n" +
+    "        <img ng-src=\"img/loading.gif\" ng-show=\"loading\">\n" +
     "      </div>\n" +
     "        <div class=\"modal-body\">\n" +
     "          <table class=\"full-width\">\n" +
@@ -259,7 +259,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "                <div class=\"policy\" ng-repeat=\"policy in policies|filter:{cat: 'owner'}\">\n" +
     "                  <div class=\"pull-left\">\n" +
-    "                    <img ng-src=\"assets/loading.gif\" ng-show=\"policy.loading\" />\n" +
+    "                    <img ng-src=\"img/loading.gif\" ng-show=\"policy.loading\" />\n" +
     "                    <button class=\"btn btn-sm\" ng-click=\"removePolicy(policy.$$hashKey)\" ng-hide=\"policy.loading\"><i class=\"fa fa-trash-o orange\"></i></button>\n" +
     "                    <a href=\"{{policy.webid}}\" target=\"_blank\" ng-show=\"policy.webid\">{{trunc(policy.fullname, 24)}}</a>\n" +
     "                    <div class=\"inline-block\" ng-show=\"policy.key\">\n" +
@@ -273,7 +273,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "                <div class=\"spacer\">\n" +
     "                  <div class=\"policy\" ng-show=\"newUser['owner']\">\n" +
     "                    <input class=\"new-user vmiddle\" type=\"text\" ng-focus=\"isFocused\" ng-model=\"newUser['owner'].webid\" typeahead=\"match.webid as match.name for match in lookupWebID($viewValue)|filter:{name:$viewValue}|limitTo:8\" typeahead-loading=\"searchloading\" typeahead-min-length=\"2\" typeahead-wait-ms=\"200\" typeahead-on-select=\"addNewUser('owner', $item.webid)\"/>\n" +
-    "                    <img ng-src=\"assets/loading.gif\" ng-show=\"searchloading\" />\n" +
+    "                    <img ng-src=\"img/loading.gif\" ng-show=\"searchloading\" />\n" +
     "                    <button class=\"btn btn-sm btn-primary\" ng-click=\"addNewUser('owner', newUser['owner'].webid)\"><i class=\"fa fa-2x fa-check-circle-o\"></i></button>\n" +
     "                    <button class=\"btn btn-sm\" ng-click=\"cancelNewUser('owner')\"><i class=\"fa fa-2x fa-times-circle-o\"></i></button>\n" +
     "                    <br/>\n" +
@@ -302,7 +302,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "              <td class=\"vtop policies\">\n" +
     "                <div class=\"policy\" ng-repeat=\"policy in policies|filter:{cat: 'others'}\">\n" +
     "                  <div class=\"pull-left\">\n" +
-    "                    <img ng-src=\"assets/loading.gif\" ng-show=\"policy.loading\" />\n" +
+    "                    <img ng-src=\"img/loading.gif\" ng-show=\"policy.loading\" />\n" +
     "                    <button class=\"btn btn-sm\" ng-click=\"removePolicy(policy.$$hashKey)\" ng-hide=\"policy.loading\"><i class=\"fa fa-trash-o orange\"></i></button>\n" +
     "                    <a href=\"{{policy.webid}}\" target=\"_blank\" ng-show=\"policy.webid\">{{trunc(policy.fullname, 24)}}</a>\n" +
     "                    <div class=\"inline-block\" ng-show=\"policy.key\">\n" +
@@ -321,7 +321,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "                <div class=\"spacer\">\n" +
     "                  <div class=\"policy\" ng-show=\"newUser['others']\">\n" +
     "                    <input class=\"new-user vmiddle\" type=\"text\" ng-focus=\"isFocused\" ng-model=\"newUser['others'].webid\" typeahead=\"match.webid as match.name for match in lookupWebID($viewValue)|filter:{name:$viewValue}|limitTo:8\" typeahead-loading=\"searchloading\" typeahead-min-length=\"2\" typeahead-wait-ms=\"200\" typeahead-on-select=\"addNewUser('others', $item.webid)\"/>\n" +
-    "                    <img ng-src=\"assets/loading.gif\" ng-show=\"searchloading\" />\n" +
+    "                    <img ng-src=\"img/loading.gif\" ng-show=\"searchloading\" />\n" +
     "                    <button class=\"btn btn-sm btn-primary\" ng-click=\"addNewUser('others', newUser['others'].webid)\"><i class=\"fa fa-2x fa-check-circle-o\"></i></button>\n" +
     "                    <button class=\"btn btn-sm\" ng-click=\"cancelNewUser('others')\"><i class=\"fa fa-2x fa-times-circle-o\"></i></button>\n" +
     "                    <br/>\n" +
