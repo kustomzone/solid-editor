@@ -20,7 +20,7 @@
 Currently incorporates several sources..
 
 - Jeff Zucker's Solid-IDE: https://github.com/jeff-zucker/solid-ide
-- LinkData's Warp: https://github.com/linkeddata/warp
+- LinkedData's Warp: https://github.com/linkeddata/warp
 
 Which also include; Ace, Angular, Jquery, RDFlib, Vue, etc.
 

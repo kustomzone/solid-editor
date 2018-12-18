@@ -4038,8 +4038,6 @@ h1 {
   text-align: center;
   min-height: 600px;
   margin-right: 7px;
-  border: 1px solid #070707;
-  box-shadow: #353535 0 0 1px 1px;
 }
 
 @media (min-width: 768px) {
